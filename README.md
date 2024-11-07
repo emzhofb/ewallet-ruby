@@ -130,10 +130,10 @@ go to http://localhost:3000
   }
   ```
   - Transfer balance second user to first user
-  Transfer the balance from second user (which decided from our access_token login), and to_account_id, assume the account_id is 2
+  Transfer the balance from second user (which decided from our access_token login), and to_account_id, assume the account_id is 1
   ```
   {
-    "to_account_id": 2,
+    "to_account_id": 1,
     "amount": 100.0
   }
   ```
