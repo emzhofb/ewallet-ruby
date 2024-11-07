@@ -17,12 +17,15 @@ Rails.application.routes.draw do
   
   namespace :api do
     namespace :v1 do
+      post "transfers/create", to: 'transfers#create'
       get "accounts", to: 'accounts#index'
       post 'accounts/create', to: 'accounts#create'
       get "accounts/:id", to: 'accounts#show'
+      post "accounts/:id/update_balance", to: 'accounts#update_balance'
     end
   end
 
   # Catch-all route for API that matches unmatched paths
   match '*path', to: 'application#route_not_found', via: :all
 end
+ 

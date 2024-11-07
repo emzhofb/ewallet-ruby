@@ -38,6 +38,32 @@ class Api::V1::AccountsController < ApplicationController
     end
   end
 
+  # PATCH /api/v1/accounts/:id/update_balance
+  def update_balance
+    @account = @current_user.accounts.find_by(id: params[:id])
+
+    if @account.nil?
+      render json: { error: 'Account not found' }, status: :not_found
+      return
+    end
+
+    # Validate the balance parameter
+    if params[:balance].nil? || !params[:balance].is_a?(Numeric)
+      render json: { error: 'Invalid balance' }, status: :unprocessable_entity
+      return
+    end
+
+    # Update the balance
+    @account.balance = params[:balance]
+
+    # Save the account with the new balance
+    if @account.save
+      render json: { message: 'Balance updated successfully', account: @account }, status: :ok
+    else
+      render json: { errors: @account.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def account_params
