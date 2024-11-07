@@ -19,6 +19,8 @@ gem "jbuilder"
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
+gem 'net-http-persistent', '~> 4.0.4'  # Optional, for persistent connections (if you need)
+gem 'json', '~> 2.6'                    # JSON parsing
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"

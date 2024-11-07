@@ -158,6 +158,8 @@ GEM
     minitest (5.25.1)
     msgpack (1.7.3)
     mysql2 (0.5.6)
+    net-http-persistent (4.0.4)
+      connection_pool (~> 2.2)
     net-imap (0.5.0)
       date
       net-protocol
@@ -352,9 +354,11 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  json (~> 2.6)
   jwt
   kamal
   mysql2 (~> 0.5)
+  net-http-persistent (~> 4.0.4)
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.0.rc2)
