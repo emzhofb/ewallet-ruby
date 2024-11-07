@@ -14,4 +14,15 @@ Rails.application.routes.draw do
   post 'auth/register', to: 'auth#register'
   post 'auth/login', to: 'auth#login'
   post 'auth/refresh', to: 'auth#refresh'  # refresh token endpoint
+  
+  namespace :api do
+    namespace :v1 do
+      get "accounts", to: 'accounts#index'
+      post 'accounts/create', to: 'accounts#create'
+      get "accounts/:id", to: 'accounts#show'
+    end
+  end
+
+  # Catch-all route for API that matches unmatched paths
+  match '*path', to: 'application#route_not_found', via: :all
 end

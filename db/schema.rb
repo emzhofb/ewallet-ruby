@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_07_045956) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_07_052946) do
+  create_table "accounts", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.bigint "owner_id", null: false
+    t.decimal "balance", precision: 10, scale: 2, default: "0.0"
+    t.string "currency", default: "USD"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_accounts_on_owner_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "username"
     t.string "email"
@@ -23,4 +32,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_07_045956) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
+
+  add_foreign_key "accounts", "users", column: "owner_id"
 end

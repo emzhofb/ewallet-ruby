@@ -24,5 +24,8 @@ module Ewallet
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.autoload_paths += %W(#{config.root}/lib)
+
+    # Ensure the app is API only
+    config.api_only = true
   end
 end

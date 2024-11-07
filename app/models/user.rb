@@ -1,6 +1,7 @@
 # app/models/user.rb
 class User < ApplicationRecord
   validates :role, inclusion: { in: %w(user stock team), message: "%{value} is not a valid role" }
+  has_many :accounts, foreign_key: :owner_id
 
   has_secure_password
   validates :username, presence: true, uniqueness: true
