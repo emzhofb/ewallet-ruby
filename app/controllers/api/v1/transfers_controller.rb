@@ -16,6 +16,12 @@ class Api::V1::TransfersController < ApplicationController
       return
     end
 
+    # Check if the from_account is the same as to_account
+    if from_account.id == to_account.id
+      render json: { error: 'From account and To account cannot be the same' }, status: :unprocessable_entity
+      return
+    end
+
     # Check if the transfer amount is valid
     amount = params[:amount].to_f
     if amount <= 0 || from_account.balance < amount
